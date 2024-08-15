@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import './RecipeList.scss';
 
 export default function RecipeList({ recipes }) {
+  if (recipes.length === 0) {
+    return <div className='error'>No recipes to load...</div>;
+  }
+
   return (
     <div className='recipe-list'>
       {recipes &&
