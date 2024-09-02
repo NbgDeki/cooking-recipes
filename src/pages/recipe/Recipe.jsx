@@ -3,14 +3,16 @@ import { useFetch } from '../../hooks/useFetch';
 
 // styles
 import './Recipe.scss';
+import { useTheme } from '../../hooks/useTheme';
 
 export default function Recipe() {
   const { id } = useParams();
   const url = `http://localhost:3000/recipes/${id}`;
   const { data: recipe, isPending, error } = useFetch(url);
+  const { mode } = useTheme();
 
   return (
-    <div className='recipe'>
+    <div className={`recipe ${mode}`}>
       {error && <div className='error'>{error}</div>}
 
       {isPending && <div className='loading'>Loading</div>}

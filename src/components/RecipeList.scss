@@ -14,6 +14,16 @@
     transition: all 0.3s ease;
     position: relative;
 
+    &.dark {
+      background-color: #555;
+
+      p,
+      h3,
+      div {
+        color: #e4e4e4;
+      }
+    }
+
     &:hover {
       rotate: 3deg;
     }
