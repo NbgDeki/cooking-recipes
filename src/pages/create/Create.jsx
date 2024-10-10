@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { projectFirestore } from '../../firebase/config';
 
 // styles
@@ -12,7 +12,7 @@ export default function Create() {
   const [newIngredient, setNewIngredient] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const ingredientInput = useRef(null);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ export default function Create() {
 
     try {
       await projectFirestore.collection('recipes').add(doc);
-      history.push('/');
+      navigate('/');
     } catch (err) {
       console.log(err);
     }
